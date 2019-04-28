@@ -40,6 +40,7 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("E-College");
         setContentView(R.layout.activity_info);
         initViews();
     }

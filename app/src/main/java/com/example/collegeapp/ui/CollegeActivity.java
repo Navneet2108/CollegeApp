@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.collegeapp.model.College;
@@ -24,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CollegeActivity extends AppCompatActivity {
     EditText eTxtName,eTxtEmail,eTxtCity,eTxtState;
+    TextView txtTitle;
     Button btnSubmit;
     College colleges;
     boolean updateMode;
@@ -33,7 +35,7 @@ public class CollegeActivity extends AppCompatActivity {
 
     void initViews() {
         eTxtName = findViewById(R.id.editTextName);
-
+        txtTitle=findViewById(R.id.textViewTitle);
         eTxtEmail = findViewById(R.id.editTextEmail);
         eTxtCity = findViewById(R.id.editTextCity);
         eTxtState = findViewById(R.id.editTextState);
@@ -62,8 +64,9 @@ public class CollegeActivity extends AppCompatActivity {
 
         updateMode = rcv.hasExtra("keyCollege");
         if (updateMode) {
-            getSupportActionBar().setTitle("Update College");
+            getSupportActionBar().setTitle("E-College");
             colleges = (College) rcv.getSerializableExtra("keyCollege");
+            txtTitle.setText("Update College");
             eTxtName.setText(colleges.name);
             eTxtEmail.setText(colleges.email);
             eTxtCity.setText(colleges.city);
@@ -78,6 +81,7 @@ public class CollegeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_college);
+        getSupportActionBar().setTitle("E-College");
         initViews();
 
     }
@@ -90,33 +94,17 @@ public class CollegeActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isComplete()) {
                                 Toast.makeText(CollegeActivity.this, "Updation Finished", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(CollegeActivity.this, CoursesActivity.class);
+                                Intent intent = new Intent(CollegeActivity.this, AllCollegeActivity.class);
                                 startActivity(intent);
-                                //finish();
+                                finish();
                             } else {
                                 Toast.makeText(CollegeActivity.this, "Updation Failed", Toast.LENGTH_LONG).show();
                             }
                         }
                     });
-
-
-        } else {
-            db.collection("Colleges").add(colleges)
-
-                    .addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentReference> task) {
-                            if (task.isComplete()) {
-                                Toast.makeText(CollegeActivity.this, colleges.name + "Save college Sucessfully", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(CollegeActivity.this, HomeActivity.class);
-                                startActivity(intent);
-                                //finish();
-                            }
-                        }
-                    });
-
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(1, 101, 1, "All Colleges");
