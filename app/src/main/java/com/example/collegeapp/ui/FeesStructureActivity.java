@@ -9,11 +9,11 @@ import android.widget.TextView;
 import com.example.e_collegeapp.R;
 
 public class FeesStructureActivity extends AppCompatActivity {
-    TextView txtpaymnt;
+    TextView txtpayment;
      void initViews(){
-         txtpaymnt= findViewById(R.id.textViewpayment);
+         txtpayment= findViewById(R.id.textViewpayment);
 
-         txtpaymnt.setOnClickListener(new View.OnClickListener() {
+         txtpayment.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
                  Intent intent= new Intent(FeesStructureActivity.this,GuidelinesActivity.class);
