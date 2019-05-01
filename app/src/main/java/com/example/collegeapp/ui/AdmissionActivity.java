@@ -13,7 +13,7 @@ public class AdmissionActivity extends AppCompatActivity implements View.OnClick
    TextView guidelines,feeStructure;
   // Button btnForm;
    public  void initViews(){
-       guidelines = findViewById(R.id.textViewDeadline);
+       guidelines = findViewById(R.id.textViewGuidelines);
        feeStructure=findViewById(R.id.FeeStructure);
       // btnForm = findViewById(R.id.buttonForms);
 
@@ -32,7 +32,7 @@ public class AdmissionActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
        int id=v.getId();
        switch (id){
-           case R.id.textViewDeadline:
+           case R.id.textViewGuidelines:
                Intent deadline= new Intent(AdmissionActivity.this,GuidelinesActivity.class);
                startActivity(deadline);
                break;

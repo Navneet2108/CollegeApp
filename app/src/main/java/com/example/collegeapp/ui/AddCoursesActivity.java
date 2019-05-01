@@ -23,7 +23,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class AddCoursesActivity extends AppCompatActivity implements View.OnClickListener {
-      EditText etxtcourse;
+      EditText etxtcourse,etxtcoursefee;
       Button btnSubmit,btnView;
 
       Courses courses;
@@ -36,6 +36,7 @@ public class AddCoursesActivity extends AppCompatActivity implements View.OnClic
 boolean updateMode;
     void initViews(){
       etxtcourse = findViewById(R.id.editTextCoures);
+        etxtcoursefee = findViewById(R.id.editTextCoursefees);
        btnSubmit=findViewById(R.id.buttonsubmit);
        btnView=findViewById(R.id.buttonview);
 
@@ -58,7 +59,9 @@ boolean updateMode;
             getSupportActionBar().setTitle("Update Course");
             courses = (Courses) rcv.getSerializableExtra("keyCourse");
             etxtcourse.setText(courses.Name);
+            etxtcoursefee.setText(courses.coursefees);
             btnSubmit.setText("Update Course");
+            btnView.setVisibility(View.INVISIBLE);
 
         }
 
@@ -106,6 +109,7 @@ boolean updateMode;
 
     void clearFields(){
         etxtcourse.setText("");
+        etxtcoursefee.setText("");
 
     }
 
@@ -115,6 +119,7 @@ boolean updateMode;
 
         if(id == R.id.buttonsubmit){
             courses.Name = etxtcourse.getText().toString();
+            courses.coursefees=etxtcoursefee.getText().toString();
             saveCoursesInCloud();
 
         }else {

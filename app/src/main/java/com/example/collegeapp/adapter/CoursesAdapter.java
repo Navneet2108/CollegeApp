@@ -52,6 +52,7 @@ public class CoursesAdapter  extends RecyclerView.Adapter<CoursesAdapter.ViewHol
     public void onBindViewHolder(@NonNull CoursesAdapter.ViewHolder viewHolder, int i) {
         Courses courses = objects.get(i);
         viewHolder.txtTitle.setText(courses.Name);
+        viewHolder.txtCoursefee.setText(courses.coursefees);
     }
 
     @Override
@@ -61,10 +62,12 @@ public class CoursesAdapter  extends RecyclerView.Adapter<CoursesAdapter.ViewHol
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtTitle;
+        TextView txtCoursefee;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTitle = itemView.findViewById(R.id.textViewTitleCourse);
+            txtCoursefee=itemView.findViewById(R.id.textViewTitleCoursefee);
         }
     }
 }

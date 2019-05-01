@@ -20,6 +20,7 @@
         android:textStyle="bold"
         android:text="GUIDELINES" />
 
+
     <EditText
         android:id="@+id/editTextguidelines"
         android:layout_width="match_parent"
@@ -29,9 +30,8 @@
         android:layout_marginTop="16dp"
         android:inputType="textPersonName"
         android:hint="Enter guidelines" />
-
     <Button
-        android:id="@+id/buttonView"
+        android:id="@+id/btnsave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
@@ -39,5 +39,16 @@
         android:textStyle="bold"
         android:background="@color/colorPrimary"
         android:layout_marginTop="16dp"
-        android:text="view" />
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/btnView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        android:text="View All Guidelines"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 </LinearLayout>

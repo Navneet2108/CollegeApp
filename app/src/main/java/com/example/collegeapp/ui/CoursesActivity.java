@@ -110,13 +110,15 @@ user=new User();
 
     }
     void deleteCoursesFromCloudDB(){
-        db.collection("User").document(firebaseUser.getUid()).collection("Colleges").document(firebaseUser.getUid()).collection("Courses").document(courses.doc_Id)
+
+        db.collection("User").document(firebaseUser.getUid()).collection("College").document(firebaseUser.getUid()).collection("Courses").document(courses.doc_Id)
                 .delete()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isComplete()){
                             Toast.makeText(CoursesActivity.this,"Deletion Finished",Toast.LENGTH_LONG).show();
+
                             coursesArrayList.remove(position);
                             coursesAdapter.notifyDataSetChanged(); // Refresh Your RecyclerView
                         }else{

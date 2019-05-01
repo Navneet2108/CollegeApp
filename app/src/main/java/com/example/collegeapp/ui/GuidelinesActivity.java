@@ -1,5 +1,8 @@
 package com.example.collegeapp.ui;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,13 +13,16 @@ import android.widget.Toast;
 import com.example.collegeapp.model.Guidelines;
 import com.example.e_collegeapp.R;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class GuidelinesActivity extends AppCompatActivity {
+public class GuidelinesActivity extends AppCompatActivity implements View.OnClickListener{
       EditText etxtguideline;
-      Button btnview;
+      Button btnview,btnsave;
 
       Guidelines guidelines;
 
@@ -24,9 +30,12 @@ public class GuidelinesActivity extends AppCompatActivity {
       FirebaseAuth auth;
       FirebaseFirestore db;
 
+      ProgressDialog progressDialog;
+
     void initViews(){
         etxtguideline =findViewById(R.id.editTextguidelines);
-        btnview = findViewById(R.id.buttonView);
+        btnview = findViewById(R.id.btnView);
+        btnsave=findViewById(R.id.btnsave);
 
         guidelines=new Guidelines();
 
@@ -34,13 +43,13 @@ public class GuidelinesActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         firebaseUser = auth.getCurrentUser();
 
-        btnview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              guidelines.guideln = etxtguideline.getText().toString();
-              viewguidelines();
-            }
-        });
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please Wait..");
+        progressDialog.setCancelable(false);
+
+
+        btnview.setOnClickListener(this);
+        btnsave.setOnClickListener(this);
     }
 
     @Override
@@ -49,7 +58,40 @@ public class GuidelinesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_guidelines);
         initViews();
     }
-    void viewguidelines(){
-        Toast.makeText(getApplicationContext(),"View guidlines",Toast.LENGTH_LONG).show();
+    void saveguidelines(){
+        progressDialog.show();
+        db.collection("User").document(firebaseUser.getUid()).collection("College").document(firebaseUser.getUid()).collection("AdmissionGuidelines").add(guidelines)
+                .addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                        if (task.isComplete()){
+                            Toast.makeText(GuidelinesActivity.this, "Details Saved Successfully", Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
+                            clearFields();
+                        }
+                    }
+                });
+    }
+    void clearFields(){
+        etxtguideline.setText("");
+
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id=v.getId();
+        switch (id){
+            case R.id.btnsave:
+                guidelines.guideln = etxtguideline.getText().toString();
+                saveguidelines();
+                break;
+            case R.id.btnView:
+                Intent intent=new Intent(GuidelinesActivity.this,AllGuidelinesActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+        }
+
     }
 }
