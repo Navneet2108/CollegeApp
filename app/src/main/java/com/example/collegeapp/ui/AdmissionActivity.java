@@ -11,11 +11,11 @@ import com.example.e_collegeapp.R;
 
 public class AdmissionActivity extends AppCompatActivity implements View.OnClickListener {
    TextView guidelines,feeStructure;
-   Button btnForm;
+  // Button btnForm;
    public  void initViews(){
        guidelines = findViewById(R.id.textViewDeadline);
-       feeStructure=findViewById(R.id.textViewFees);
-       btnForm = findViewById(R.id.buttonForms);
+       feeStructure=findViewById(R.id.FeeStructure);
+      // btnForm = findViewById(R.id.buttonForms);
 
        guidelines.setOnClickListener(this);
        feeStructure.setOnClickListener(this);
@@ -33,12 +33,12 @@ public class AdmissionActivity extends AppCompatActivity implements View.OnClick
        int id=v.getId();
        switch (id){
            case R.id.textViewDeadline:
-               Intent intent= new Intent(AdmissionActivity.this,GuidelinesActivity.class);
-               startActivity(intent);
+               Intent deadline= new Intent(AdmissionActivity.this,GuidelinesActivity.class);
+               startActivity(deadline);
                break;
-           case R.id.textViewFees:
-               Intent intent1= new Intent(AdmissionActivity.this, FeesStructureActivity.class);
-               startActivity(intent1);
+           case R.id.FeeStructure:
+               Intent feestructure= new Intent(AdmissionActivity.this, FeesStructureActivity.class);
+               startActivity(feestructure);
                break;
 
 

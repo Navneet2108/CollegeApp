@@ -17,6 +17,7 @@ import com.example.collegeapp.adapter.CoursesAdapter;
 import com.example.collegeapp.listener.OnRecyclerItemClickListener;
 import com.example.collegeapp.model.College;
 import com.example.collegeapp.model.Courses;
+import com.example.collegeapp.model.User;
 import com.example.e_collegeapp.R;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +37,7 @@ public class CoursesActivity extends AppCompatActivity implements OnRecyclerItem
     FirebaseUser firebaseUser;
     FirebaseAuth auth;
     FirebaseFirestore db;
+    User user;
 
     RecyclerView recyclerView;
     ArrayList<Courses> coursesArrayList;
@@ -47,7 +49,7 @@ public class CoursesActivity extends AppCompatActivity implements OnRecyclerItem
        
        courses = new Courses();
 
-
+user=new User();
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -67,7 +69,7 @@ public class CoursesActivity extends AppCompatActivity implements OnRecyclerItem
     }
 
     private void fetchCourseFromCloud() {
-        db.collection("Colleges").document(firebaseUser.getUid()).collection("Courses").get()
+        db.collection("User").document(firebaseUser.getUid()).collection("College").document(firebaseUser.getUid()).collection("Courses").get()
                 .addOnCompleteListener(this, new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -108,7 +110,7 @@ public class CoursesActivity extends AppCompatActivity implements OnRecyclerItem
 
     }
     void deleteCoursesFromCloudDB(){
-        db.collection("Colleges").document(firebaseUser.getUid()).collection("Courses").document(courses.doc_Id)
+        db.collection("User").document(firebaseUser.getUid()).collection("Colleges").document(firebaseUser.getUid()).collection("Courses").document(courses.doc_Id)
                 .delete()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override

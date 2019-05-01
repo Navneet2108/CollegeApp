@@ -24,9 +24,25 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Enter College Name"
-        android:textSize="16dp"
+        android:textSize="20dp"
         android:inputType="textPersonName"
         android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+    <!--<EditText-->
+        <!--android:id="@+id/editcity"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:hint="Enter City"-->
+        <!--android:textColor="@color/common_google_signin_btn_text_dark_focused"-->
+        <!--android:inputType="textPersonName" />-->
+    <!--<EditText-->
+        <!--android:id="@+id/editstate"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:hint="Enter State"-->
+        <!--android:textColor="@color/common_google_signin_btn_text_dark_focused"-->
+        <!--android:inputType="textPersonName" />-->
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -34,6 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Enter College Email"
+        android:textSize="20dp"
         android:inputType="textEmailAddress"
         android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
@@ -42,9 +59,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:textSize="20dp"
         android:hint="Enter Password(Min 6 characters)"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:inputType="textPassword" />
+
 
 
 

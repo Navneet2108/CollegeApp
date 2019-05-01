@@ -5,23 +5,43 @@ import java.io.Serializable;
 public class CollegeInfo implements Serializable {
     String docid;
    public String info;
+    public String newstufee;
+    public  String transferstufee;
+    public String newDeadline;
+    public String transferdeadline;
+    public String address;
+    public String website;
+    public String  phone;
+
 
     public CollegeInfo() {
     }
 
-    public CollegeInfo(String docid, String info) {
+
+    public CollegeInfo(String docid, String info, String newstufee, String transferstufee, String newDeadline, String transferdeadline, String address, String website, String phone) {
         this.docid = docid;
         this.info = info;
-    }
-
-    public CollegeInfo(String info) {
-        this.info = info;
+        this.newstufee = newstufee;
+        this.transferstufee = transferstufee;
+        this.newDeadline = newDeadline;
+        this.transferdeadline = transferdeadline;
+        this.address = address;
+        this.website = website;
+        this.phone = phone;
     }
 
     @Override
     public String toString() {
         return "CollegeInfo{" +
-                "info='" + info + '\'' +
+                "docid='" + docid + '\'' +
+                ", info='" + info + '\'' +
+                ", newstufee='" + newstufee + '\'' +
+                ", transferstufee='" + transferstufee + '\'' +
+                ", newDeadline='" + newDeadline + '\'' +
+                ", transferdeadline='" + transferdeadline + '\'' +
+                ", address='" + address + '\'' +
+                ", website='" + website + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 }

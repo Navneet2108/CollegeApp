@@ -15,6 +15,7 @@ import com.example.collegeapp.adapter.CoursesAdapter;
 import com.example.collegeapp.listener.OnRecyclerItemClickListener;
 import com.example.collegeapp.model.College;
 import com.example.collegeapp.model.Courses;
+import com.example.collegeapp.model.User;
 import com.example.collegeapp.model.Util;
 import com.example.e_collegeapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,7 +35,7 @@ public class AllCollegeActivity extends AppCompatActivity  implements OnRecycler
     int position;
     CollegeAdapter collegeAdapter;
     College college;
-
+User user;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseFirestore db;
@@ -48,6 +49,7 @@ public class AllCollegeActivity extends AppCompatActivity  implements OnRecycler
         firebaseUser = firebaseAuth.getCurrentUser();
 
         college = new College();
+        user=new User();
 
 
     }
@@ -66,7 +68,7 @@ public class AllCollegeActivity extends AppCompatActivity  implements OnRecycler
     }
 
     void fetchCollegesFromCloudDb() {
-        db.collection("Colleges").get()
+        db.collection("User").document(firebaseUser.getUid()).collection("College").get()
                 .addOnCompleteListener(this, new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -119,7 +121,7 @@ public class AllCollegeActivity extends AppCompatActivity  implements OnRecycler
     }
 
     void deleteCollegesFromCloudDB(){
-        db.collection("Colleges").document(college.docID)
+        db.collection("User").document(firebaseUser.getUid()).collection("College").document(college.docID)
                 .delete()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
@@ -150,7 +152,7 @@ public class AllCollegeActivity extends AppCompatActivity  implements OnRecycler
     }
     void showOptions() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        String[] items = {"View " + college.name, "Update " + college.name, "Delete " + college.name,"Add courses","Add College Info","Cancel"};
+        String[] items = {"View " + college.name,"Update " + college.name, "Delete " + college.name,"Add courses","Add College Info","Admission Procedure","Cancel"};
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -158,24 +160,28 @@ public class AllCollegeActivity extends AppCompatActivity  implements OnRecycler
                     case 0:
                         showCollegeDetails();
                         break;
-
                     case 1:
-                        Intent intent = new Intent(AllCollegeActivity.this, CollegeActivity.class);
-                        intent.putExtra("keyCollege", college);
+                        Intent intent= new Intent(AllCollegeActivity.this, CollegeActivity.class);
+                        intent.putExtra("keyCollege",college );
                         startActivity(intent);
                         break;
+
 
                     case 2:
                         askForDeletion();
                         break;
 
                     case 3:
-                        Intent intent1 = new Intent(AllCollegeActivity.this,AddCoursesActivity.class);
-                        startActivity(intent1);
+                        Intent addcourse = new Intent(AllCollegeActivity.this,AddCoursesActivity.class);
+                        startActivity(addcourse);
                         break;
                     case 4:
-                        Intent intent2 = new Intent(AllCollegeActivity.this,InfoActivity.class);
-                        startActivity(intent2);
+                        Intent info = new Intent(AllCollegeActivity.this,InfoActivity.class);
+                        startActivity(info);
+                        break;
+                    case 5:
+                        Intent admission=new Intent(AllCollegeActivity.this,AdmissionActivity.class);
+                        startActivity(admission);
                         break;
 
 

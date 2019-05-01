@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.collegeapp.model.College;
 import com.example.collegeapp.model.Courses;
+import com.example.collegeapp.model.User;
 import com.example.e_collegeapp.R;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,7 @@ public class AddCoursesActivity extends AppCompatActivity implements View.OnClic
       Button btnSubmit,btnView;
 
       Courses courses;
+      User user;
 
       FirebaseUser firebaseUser;
       FirebaseAuth auth;
@@ -42,6 +44,8 @@ boolean updateMode;
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         firebaseUser = auth.getCurrentUser();
+
+        user=new User();
 
         btnSubmit.setOnClickListener(this);
 
@@ -62,7 +66,7 @@ boolean updateMode;
     }
     void saveCoursesInCloud() {
         if (updateMode) {
-            db.collection("Colleges").document(firebaseUser.getUid()).collection("Courses").document(courses.doc_Id).set(courses)
+            db.collection("User").document(firebaseUser.getUid()).collection("College").document(firebaseUser.getUid()).collection("Courses").document(courses.doc_Id).set(courses)
                     .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -78,7 +82,7 @@ boolean updateMode;
                     });
 
         } else {
-            db.collection("Colleges").document(firebaseUser.getUid())
+            db.collection("User").document(firebaseUser.getUid()).collection("College").document(firebaseUser.getUid())
                     .collection("Courses").add(courses)
                     .addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
                         @Override
@@ -116,7 +120,7 @@ boolean updateMode;
         }else {
             Intent intent=new Intent(AddCoursesActivity.this,CoursesActivity.class);
             startActivity(intent);
-            //finish();
+            finish();
         }
     }
 }

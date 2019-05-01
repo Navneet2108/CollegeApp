@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.collegeapp.model.College;
 import com.example.collegeapp.model.Courses;
+import com.example.collegeapp.model.User;
 import com.example.collegeapp.model.Util;
 import com.example.e_collegeapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +28,7 @@ public class CollegeActivity extends AppCompatActivity {
     EditText eTxtName,eTxtEmail,eTxtCity,eTxtState;
     TextView txtTitle;
     Button btnSubmit;
+    User user;
     College colleges;
     boolean updateMode;
     FirebaseUser firebaseUser;
@@ -40,6 +42,7 @@ public class CollegeActivity extends AppCompatActivity {
         eTxtCity = findViewById(R.id.editTextCity);
         eTxtState = findViewById(R.id.editTextState);
         btnSubmit = findViewById(R.id.buttonAdd);
+        user=new User();
         colleges = new College();
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -73,9 +76,10 @@ public class CollegeActivity extends AppCompatActivity {
             eTxtState.setText(colleges.state);
             btnSubmit.setText("Update College");
 
+
         }
 
-    }
+        }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,23 +90,36 @@ public class CollegeActivity extends AppCompatActivity {
 
     }
     void SaveCollegesInCloudDb() {
-
-        if (updateMode) {
-            db.collection("Colleges").document(colleges.docID).set(colleges)
-                    .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isComplete()) {
-                                Toast.makeText(CollegeActivity.this, "Updation Finished", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(CollegeActivity.this, AllCollegeActivity.class);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                Toast.makeText(CollegeActivity.this, "Updation Failed", Toast.LENGTH_LONG).show();
+            if (updateMode) {
+                firebaseUser = auth.getCurrentUser();
+                String docId = firebaseUser.getUid();
+                db.collection("User").document(docId).collection("College").document(firebaseUser.getUid()).set(colleges)
+                        .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isComplete()) {
+                                    Toast.makeText(CollegeActivity.this, "Updation Finished", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(CollegeActivity.this, AllCollegeActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(CollegeActivity.this, "Updation Failed", Toast.LENGTH_LONG).show();
+                                }
                             }
-                        }
-                    });
-        }
+                        });
+
+        } else {
+                db.collection("User").document(firebaseUser.getUid()).collection("College").add(colleges)
+                        .addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentReference> task) {
+                                Toast.makeText(CollegeActivity.this, colleges.name + " saved Successfully", Toast.LENGTH_LONG).show();
+                                clearFields();
+                            }
+                        });
+
+
+            }
     }
 
     @Override

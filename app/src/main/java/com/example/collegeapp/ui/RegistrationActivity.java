@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.collegeapp.model.College;
 
+import com.example.collegeapp.model.User;
 import com.example.collegeapp.model.Util;
 import com.example.e_collegeapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,11 +29,12 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText eTxtName, eTxtEmail, eTxtPassword;
-    TextView txtLogin;
+    EditText eTxtName, eTxtEmail, eTxtPassword;//,etxtcity,etxtstate;
+    TextView txtLogin, txtRegister;
     Button btnRegister;
     College colleges;
-
+    User user;
+boolean updateMode;
     ProgressDialog progressDialog;
     FirebaseAuth auth;
     FirebaseFirestore db;
@@ -41,7 +44,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         eTxtName = findViewById(R.id.editTextName);
         eTxtEmail = findViewById(R.id.editTextEmail);
         eTxtPassword = findViewById(R.id.editTextPassword);
-
+        //etxtcity=findViewById(R.id.editcity);
+        //etxtstate=findViewById(R.id.editstate);
+        txtRegister=findViewById(R.id.textViewRegister);
         btnRegister = findViewById(R.id.buttonRegister);
         btnRegister.setOnClickListener((View.OnClickListener) this);
         txtLogin = findViewById(R.id.textViewLogin);
@@ -49,6 +54,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please Wait..");
         progressDialog.setCancelable(false);
+
+        user=new User();
 
         colleges = new College();
         auth = FirebaseAuth.getInstance();
@@ -68,15 +75,16 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.buttonRegister) {
-            colleges.name = eTxtName.getText().toString();
-            colleges.email = eTxtEmail.getText().toString();
-            colleges.password = eTxtPassword.getText().toString();
+        if(id == R.id.buttonRegister){
 
-            if (Util.isInternetConnected(this)) {
-                progressDialog.show();
+            user.Name = eTxtName.getText().toString();
+            //colleges.city=etxtcity.getText().toString();
+            //colleges.state=etxtstate.getText().toString();
+            user.Email=eTxtEmail.getText().toString();
+            user.Password=eTxtPassword.getText().toString();
+            if(Util.isInternetConnected(this)) {
                 registerUser();
-            } else {
+            }else {
                 Toast.makeText(this, "Please Connect to Internet and Try Again", Toast.LENGTH_LONG).show();
             }
         } else {
@@ -88,12 +96,12 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
     void registerUser() {
         progressDialog.show();
-        auth.createUserWithEmailAndPassword(colleges.email, colleges.password)
+        auth.createUserWithEmailAndPassword(user.Email, user.Password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isComplete()) {
-                            /*Toast.makeText(RegistrationActivity.this,colleges.name+"Registered Sucessfully",Toast.LENGTH_LONG).show();
+                         /*Toast.makeText(RegistrationActivity.this,user.Name+"Registered Sucessfully",Toast.LENGTH_LONG).show();
                             progressDialog.dismiss();
                             Intent intent = new Intent(RegistrationActivity.this, HomeActivity.class);
                             startActivity(intent);
@@ -105,26 +113,14 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     }
 
     void saveUserInCloudDB() {
-       /* db.collection("Colleges").add(colleges)
-                .addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                        if (task.isComplete()) {
-                            Toast.makeText(RegistrationActivity.this, colleges.name+" Registered Sucessfully", Toast.LENGTH_LONG).show();
-                            progressDialog.dismiss();
-                            Intent intent = new Intent(RegistrationActivity.this,CollegeActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
 
-                });*/
-        firebaseUser= auth.getCurrentUser();
-        db.collection("Colleges").document(firebaseUser.getUid()).set(colleges)
+
+        firebaseUser = auth.getCurrentUser();
+        db.collection("User").document(firebaseUser.getUid()).set(user)
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(RegistrationActivity.this, colleges.name + " Registered Successful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegistrationActivity.this, user.Name + " Registered Successful", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
                         //Intent intent = new Intent(RegisterActivity.this, SuccessActivity.class);
                         Intent intent = new Intent(RegistrationActivity.this, HomeActivity.class);
@@ -132,6 +128,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                         finish();
                     }
                 });
+
+    }
     }
 
-}

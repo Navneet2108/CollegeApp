@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.collegeapp.model.College;
 
+import com.example.collegeapp.model.User;
 import com.example.e_collegeapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     College colleges;
     ProgressDialog progressDialog;
     FirebaseAuth auth;
+    User user;
 
     void initViews(){
         eTxtEmail = findViewById(R.id.editTextEmail);
@@ -36,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please Wait..");
         progressDialog.setCancelable(false);
+        user=new User();
 
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
@@ -86,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     void loginUser(){
         progressDialog.show();
         //Toast.makeText(getApplicationContext(),"Login Clicked2",Toast.LENGTH_LONG).show();
-        auth.signInWithEmailAndPassword(colleges.email,colleges.password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        auth.signInWithEmailAndPassword(user.Email,user.Password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {

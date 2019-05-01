@@ -14,10 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Admission" />
+        android:text="ADMISSION PROCEDURE"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textViewGuidelines"
@@ -27,16 +28,17 @@
         android:textSize="20dp"
         android:gravity="center"
         android:layout_marginTop="16dp"
-        android:text="GuideLines" />
+        android:text="GuideLines"
+        android:textStyle="italic"/>
 
-    <Button
-        android:id="@+id/buttonForms"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/colorBlack"
-        android:text="form" />
+    <!--<Button-->
+        <!--android:id="@+id/buttonForms"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="20dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:textColor="@color/colorBlack"-->
+        <!--android:text="form" />-->
 
     <TextView
         android:id="@+id/FeeStructure"
@@ -46,5 +48,6 @@
         android:textSize="20dp"
         android:gravity="center"
         android:layout_marginTop="16dp"
-        android:text="Fees Structure" />
+        android:text="Fees Structure"
+        android:textStyle="italic"/>
 </LinearLayout>

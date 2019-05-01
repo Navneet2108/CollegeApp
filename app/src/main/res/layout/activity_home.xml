@@ -51,7 +51,7 @@
         app:layout_constraintVertical_bias="0.03" />
 
     <Button
-        android:id="@+id/buttonaddcollege"
+        android:id="@+id/addcollege"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ADD COLLEGE"

@@ -15,8 +15,8 @@
         <activity android:name="com.example.collegeapp.ui.RegistrationActivity"/>
         <activity android:name="com.example.collegeapp.ui.LoginActivity"/>
 <activity android:name="com.example.collegeapp.ui.CoursesActivity"/>
-        <activity android:name="com.example.collegeapp.ui.feesActivity"/>
-        <activity android:name="com.example.collegeapp.ui.ContactUsActivity"/>
+        <!--<activity android:name="com.example.collegeapp.ui.feesActivity"/>-->
+        <!--<activity android:name="com.example.collegeapp.ui.ContactUsActivity"/>-->
         <activity android:name="com.example.collegeapp.ui.AddCoursesActivity"/>
        <activity android:name="com.example.collegeapp.ui.HomeActivity"/>
         <activity android:name="com.example.collegeapp.ui.InfoActivity"/>

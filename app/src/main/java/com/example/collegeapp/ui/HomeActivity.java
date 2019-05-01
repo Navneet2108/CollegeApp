@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 
+import com.example.collegeapp.model.College;
 import com.example.e_collegeapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -16,18 +17,20 @@ import com.google.firebase.auth.FirebaseAuth;
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
     FirebaseAuth auth;
     Button btnaddclg,btnviewclg,btnviewstd,btnviewpaymnt;
-
+College college;
     void initViews(){
-        btnaddclg = findViewById(R.id.buttonaddcollege);
+       btnaddclg = findViewById(R.id.addcollege);
         btnviewclg=findViewById(R.id.buttonviewcolleges);
         btnviewstd = findViewById(R.id.buttonViewstudent);
         btnviewpaymnt=findViewById(R.id.buttonviewPayment);
 
-        btnaddclg.setOnClickListener(this);
+       btnaddclg.setOnClickListener(this);
         btnviewclg.setOnClickListener(this);
         btnviewstd.setOnClickListener(this);
         btnviewpaymnt.setOnClickListener(this);
+        college=new College();
     }
+
 
 
 
@@ -69,10 +72,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         int id=v.getId();
         switch (id){
-            case R.id.buttonaddcollege:
-                Intent intent= new Intent(HomeActivity.this, CollegeActivity.class);
+            case R.id.addcollege:
+                Intent intent= new Intent(HomeActivity.this,CollegeActivity.class);
                 startActivity(intent);
-                break;
+               break;
 
             case R.id.buttonviewcolleges:
                 Intent intent1= new Intent(HomeActivity.this,AllCollegeActivity.class);
