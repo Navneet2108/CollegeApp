@@ -87,9 +87,9 @@ public class GuidelinesActivity extends AppCompatActivity implements View.OnClic
                 saveguidelines();
                 break;
             case R.id.btnView:
-                Intent intent=new Intent(GuidelinesActivity.this,AllGuidelinesActivity.class);
-                startActivity(intent);
-                finish();
+                //Intent intent=new Intent(GuidelinesActivity.this,AllGuidelinesActivity.class);
+                //startActivity(intent);
+                //finish();
                 break;
         }
 
