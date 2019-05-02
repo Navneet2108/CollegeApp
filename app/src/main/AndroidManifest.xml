@@ -13,7 +13,7 @@
         <activity android:name="com.example.collegeapp.ui.GuidelinesActivity" />
         <activity android:name="com.example.collegeapp.ui.PersonalInfoActivity" />
         <activity android:name="com.example.collegeapp.ui.FeesStructureActivity" />
-        <activity android:name="com.example.collegeapp.ui.StudentProfile" />
+
         <activity android:name="com.example.collegeapp.ui.AllStudentActivity" />
         <activity android:name="com.example.collegeapp.ui.AllCollegeActivity" />
         <activity android:name="com.example.collegeapp.ui.RegistrationActivity" />
