@@ -78,8 +78,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             eTxtPassword.requestFocus();
         }
         else {
-            colleges.email = eTxtEmail.getText().toString();
-            colleges.password = eTxtPassword.getText().toString();
+            user.Email = eTxtEmail.getText().toString();
+            user.Password = eTxtPassword.getText().toString();
             loginUser();
         }
 
@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     void loginUser(){
         progressDialog.show();
-        //Toast.makeText(getApplicationContext(),"Login Clicked2",Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(),"Login Clicked2",Toast.LENGTH_LONG).show();
         auth.signInWithEmailAndPassword(user.Email,user.Password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

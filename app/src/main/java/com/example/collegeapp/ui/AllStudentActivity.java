@@ -43,6 +43,9 @@ public class AllStudentActivity extends AppCompatActivity implements OnRecyclerI
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseFirestore db;
+
+    String id;
+
     void initViews() {
 
         recyclerView = findViewById(R.id.StudentRecyclerView);
@@ -72,6 +75,7 @@ public class AllStudentActivity extends AppCompatActivity implements OnRecyclerI
     }
 
    void fetchStudentsFromCloudDb() {
+
        db.collection("students").get().addOnCompleteListener(AllStudentActivity.this, new OnCompleteListener<QuerySnapshot>() {
            @Override
            public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -154,7 +158,9 @@ public class AllStudentActivity extends AppCompatActivity implements OnRecyclerI
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case 0:
-                       Intent intent=new Intent(AllStudentActivity.this,StudentProfile.class);
+
+                       Intent intent=new Intent(AllStudentActivity.this,PersonalInfoActivity.class);
+                       intent.putExtra("keyid",id);
                        startActivity(intent);
                         break;
 
@@ -174,6 +180,7 @@ public class AllStudentActivity extends AppCompatActivity implements OnRecyclerI
     public void onItemClick(int position) {
         this.position = position;
         student = studentArrayList.get(position);
+        id=student.docID;
         Toast.makeText(this,"You Clicked on Position:"+position,Toast.LENGTH_LONG).show();
         //showStudentDetails();
         showOptions();

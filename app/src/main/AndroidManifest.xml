@@ -9,24 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.collegeapp.ui.GuidelinesActivity"/>
-        <activity android:name="com.example.collegeapp.ui.FeesStructureActivity"></activity>
-<activity android:name="com.example.collegeapp.ui.StudentProfile"/>
-<activity android:name="com.example.collegeapp.ui.AllStudentActivity"/>
+        <activity android:name="com.example.collegeapp.ui.AllGuidelinesActivity"></activity>
+        <activity android:name="com.example.collegeapp.ui.GuidelinesActivity" />
+        <activity android:name="com.example.collegeapp.ui.PersonalInfoActivity" />
+        <activity android:name="com.example.collegeapp.ui.FeesStructureActivity" />
+        <activity android:name="com.example.collegeapp.ui.StudentProfile" />
+        <activity android:name="com.example.collegeapp.ui.AllStudentActivity" />
         <activity android:name="com.example.collegeapp.ui.AllCollegeActivity" />
-        <activity android:name="com.example.collegeapp.ui.RegistrationActivity"/>
-        <activity android:name="com.example.collegeapp.ui.LoginActivity"/>
-<activity android:name="com.example.collegeapp.ui.CoursesActivity"/>
-        <!--<activity android:name="com.example.collegeapp.ui.feesActivity"/>-->
-        <!--<activity android:name="com.example.collegeapp.ui.ContactUsActivity"/>-->
-        <activity android:name="com.example.collegeapp.ui.AddCoursesActivity"/>
-       <activity android:name="com.example.collegeapp.ui.HomeActivity"/>
-        <activity android:name="com.example.collegeapp.ui.InfoActivity"/>
-        <activity android:name="com.example.collegeapp.ui.AdmissionActivity"/>
-        <activity android:name="com.example.collegeapp.ui.CollegeActivity"/>
+        <activity android:name="com.example.collegeapp.ui.RegistrationActivity" />
+        <activity android:name="com.example.collegeapp.ui.LoginActivity" />
+        <activity android:name="com.example.collegeapp.ui.CoursesActivity" /> <!-- <activity android:name="com.example.collegeapp.ui.feesActivity"/> -->
+        <!-- <activity android:name="com.example.collegeapp.ui.ContactUsActivity"/> -->
+        <activity android:name="com.example.collegeapp.ui.AddCoursesActivity" />
+        <activity android:name="com.example.collegeapp.ui.HomeActivity" />
+        <activity android:name="com.example.collegeapp.ui.InfoActivity" />
+        <activity android:name="com.example.collegeapp.ui.AdmissionActivity" />
+        <activity android:name="com.example.collegeapp.ui.CollegeActivity" />
         <activity android:name="com.example.collegeapp.ui.SplashActivity">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

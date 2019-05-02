@@ -38,9 +38,9 @@ public class InfoActivity extends AppCompatActivity {
     EditText etxtaddress,etxtwebsite,etxtphone;
     TextView txtnewdeadline,txttransferdeadline;
     EditText newStudent,transerStudent;
-    Button btnsave,btnback;
+    Button btnsave,btnback,btnnewdate,btntransferdate;
     DatePickerDialog datePickerDialog;
-
+    int status = 0;
 
     void initviews(){
         txtnewdeadline=findViewById(R.id.NewDeadline);
@@ -53,6 +53,8 @@ public class InfoActivity extends AppCompatActivity {
         transerStudent=findViewById(R.id.transferStudent);
         btnsave = findViewById(R.id.buttonSave);
         btnback = findViewById(R.id.buttonback);
+        btnnewdate = findViewById(R.id.newdate);
+        btntransferdate = findViewById(R.id.transferdate);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please Wait..");
@@ -64,8 +66,21 @@ public class InfoActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         firebaseUser = auth.getCurrentUser();
 
-        txtnewdeadline.setOnClickListener(clickListener);
-        txttransferdeadline.setOnClickListener(clickListener);
+        btnnewdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status = 1;
+                showdatepickerDialog();
+            }
+        });
+        btntransferdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status = 2;
+                showdatepickerDialog();
+                //txttransferdeadline.setText(date);
+            }
+        });
 
         btnsave.setOnClickListener(clickListener);
         btnback.setOnClickListener(clickListener);
@@ -89,13 +104,7 @@ public class InfoActivity extends AppCompatActivity {
         public void onClick(View v) {
             int id=v.getId();
             switch (id){
-                case R.id.NewDeadline:
-                    showdatepickerDialog();
-                    break;
-                case R.id.transferDeadline:
-                    showdatepickerDialog();
-                    break;
-                case R.id.buttonSave:
+            case R.id.buttonSave:
                     collegeInfo.info=etxtinfo.getText().toString();
                     collegeInfo.newDeadline=txtnewdeadline.getText().toString();
                     collegeInfo.transferdeadline=txttransferdeadline.getText().toString();
@@ -130,13 +139,13 @@ public class InfoActivity extends AppCompatActivity {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
             String date = year+"/"+(month+1)+"/"+dayOfMonth;
-            int id=view.getId();
-            if (id==R.id.NewDeadline){
+            Toast.makeText(InfoActivity.this,"some error",Toast.LENGTH_LONG).show();
+
+            if(status==1) {
                 txtnewdeadline.setText(date);
-            }else{
+            }else {
                 txttransferdeadline.setText(date);
             }
-
         }
     };
 

@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
     android:orientation="vertical"
-    android:padding="10dp"
-    tools:context="com.example.collegeapp.ui.StudentProfile">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:drawableRight="@drawable/ic_student"
-        android:drawablePadding="20dp"
-        android:text="PERSONAL DETAILS"
-        android:textColor="@color/colorBlack"
-        android:textSize="25dp"
-        android:textStyle="bold" />
+    tools:context="com.example.collegeapp.ui.PersonalInfoActivity">
 
     <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/fragment_student_profile_view_swipe_refresh_layout"
@@ -33,15 +21,134 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <!--#1-->
-                <LinearLayout
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:background="@color/colorBrite"
-                    android:orientation="horizontal"
-                    android:padding="2dp" />
-                <!--#2-->
+                    android:layout_marginTop="16dp"
+                    android:text="STUDENT INFO"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="16dp"-->
+                    <!--android:id="@+id/Studentname"-->
+                    <!--android:hint="Student name"-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="16dp" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="16dp"-->
+                    <!--android:id="@+id/studentemail"-->
+                    <!--android:hint="Email"-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="16dp" />-->
+
+                <!--<android.support.constraint.ConstraintLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<Button-->
+                        <!--android:layout_width="127dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/btnedit"-->
+                        <!--android:layout_marginStart="8dp"-->
+                        <!--android:layout_marginLeft="8dp"-->
+                        <!--android:layout_marginTop="8dp"-->
+                        <!--android:layout_marginEnd="8dp"-->
+                        <!--android:layout_marginRight="8dp"-->
+                        <!--android:layout_marginBottom="8dp"-->
+                        <!--android:background="@color/colorBrite"-->
+                        <!--android:drawableLeft="@drawable/ic_edit"-->
+                        <!--android:text="Edit Profile"-->
+                        <!--android:textColor="@color/colorBlack"-->
+                        <!--android:textSize="16dp"-->
+                        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+
+                        <!--app:layout_constraintEnd_toEndOf="parent"-->
+                        <!--app:layout_constraintStart_toStartOf="parent"-->
+                        <!--app:layout_constraintTop_toTopOf="parent"-->
+                        <!--app:layout_constraintVertical_bias="0.0" />-->
+
+                    <!--<Button-->
+                    <!--android:id="@+id/button2"-->
+                    <!--android:layout_width="131dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:layout_marginEnd="52dp"-->
+                    <!--android:layout_marginRight="52dp"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--android:background="@color/colorBrite"-->
+                    <!--android:text="View Profile"-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="16dp"-->
+                    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--app:layout_constraintTop_toTopOf="parent"
+
+                app:layout_constraintEnd_toStartOf="@+id/button2"/>-->
+
+                <!--</android.support.constraint.ConstraintLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/admissionGuidelines"-->
+                        <!--android:background="@drawable/customborder"-->
+                        <!--android:text="Admission Guidelines"-->
+                        <!--android:textColor="@color/colorBlack"-->
+                        <!--android:textSize="16dp"-->
+                        <!--android:textStyle="italic" />-->
+                    <!--/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="@drawable/customborder"-->
+                        <!--android:id="@+id/writeReviews"-->
+                        <!--android:text="Write Reviews"-->
+                        <!--android:textColor="@color/colorBlack"-->
+                        <!--android:textSize="16dp"-->
+                        <!--android:textStyle="italic" />-->
+                    <!--/>-->
+                <!--</LinearLayout>-->
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="VIEW PROFILE"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -57,46 +164,29 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
-                            android:layout_width="13dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="1dp"
-                            android:layout_weight="1"
-                            android:padding="2dp"
-                            android:text="Name : "
-                            android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/student_profile_Name"
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-                            android:text=""
+                            android:text="Name: "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp"
+                            tools:layout_editor_absoluteX="40dp"
+                            tools:layout_editor_absoluteY="22dp" />
 
-                        <!--<android.support.v7.widget.AppCompatTextView-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_margin="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:padding="2dp"-->
-                        <!--android:text="Batch : "-->
-                        <!--android:textColor="@color/colorBlack"-->
-                        <!--android:textSize="14sp" />-->
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/ViewName"
+                            android:layout_width="1dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dp"
+                            android:layout_weight="1"
+                            android:padding="2dp"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14dp" />
 
                     </LinearLayout>
-                </LinearLayout>
-                <!--#3-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:orientation="vertical"
-                    android:padding="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -106,7 +196,7 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -114,21 +204,28 @@
                             android:padding="2dp"
                             android:text="Email : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_email"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/viewemail"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-                            android:text=""
-
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
+                    </LinearLayout>
 
-                        <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -136,28 +233,18 @@
                             android:padding="2dp"
                             android:text="Contact : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_contact"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/viewcontact"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
                     </LinearLayout>
-                </LinearLayout>
-                <!--#4-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:orientation="vertical"
-                    android:padding="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -167,7 +254,7 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -175,21 +262,28 @@
                             android:padding="2dp"
                             android:text="Date Of Birth : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_DOB"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/viewDOB"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
+                    </LinearLayout>
 
-                        <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -197,28 +291,18 @@
                             android:padding="2dp"
                             android:text="Gender : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
                         <android.support.v7.widget.AppCompatTextView
-                            android:id="@+id/student_profile_gender"
+                            android:id="@+id/viewgender"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
-
                             android:padding="2dp"
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
                     </LinearLayout>
-                </LinearLayout>
-                <!--#5-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:orientation="vertical"
-                    android:padding="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -228,7 +312,7 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -236,21 +320,28 @@
                             android:padding="2dp"
                             android:text="Father Name : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
                         <android.support.v7.widget.AppCompatTextView
-                            android:id="@+id/student_profile_father_name"
+                            android:id="@+id/viewfathername"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
+                    </LinearLayout>
 
-                        <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -258,28 +349,18 @@
                             android:padding="2dp"
                             android:text="Mother Name : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_mothername"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/viewmothername"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
-
                             android:padding="2dp"
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
                     </LinearLayout>
-                </LinearLayout>
-                <!--#6-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:orientation="vertical"
-                    android:padding="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -289,7 +370,7 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -297,21 +378,28 @@
                             android:padding="2dp"
                             android:text="Religion : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_religion"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/viewreligion"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-                            android:text=""
-
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
+                    </LinearLayout>
 
-                        <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -319,28 +407,19 @@
                             android:padding="2dp"
                             android:text="Nationality : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_nationality"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/viewnationality"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-                            android:text=""
-
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
                     </LinearLayout>
-                </LinearLayout>
-                <!--#7-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:orientation="vertical"
-                    android:padding="2dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -350,7 +429,7 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -358,21 +437,28 @@
                             android:padding="2dp"
                             android:text="City : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_city"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/viewcity"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-                            android:text=""
-
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
+                    </LinearLayout>
 
-                        <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -380,28 +466,19 @@
                             android:padding="2dp"
                             android:text="State : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_state"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/viewstate"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-                            android:text=""
-
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
                     </LinearLayout>
-                </LinearLayout>
-                <!--#8-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:orientation="vertical"
-                    android:padding="2dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -411,7 +488,7 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -419,21 +496,28 @@
                             android:padding="2dp"
                             android:text="Guardian Name : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_guardian_name"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/viewguardian_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-                            android:text=""
-
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
+                    </LinearLayout>
 
-                        <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -441,28 +525,19 @@
                             android:padding="2dp"
                             android:text="Guardian Contact : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_guardian_contact"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/viewguardian_contact"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-                            android:text=""
-
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
                     </LinearLayout>
-                </LinearLayout>
-                <!--#9-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:orientation="vertical"
-                    android:padding="2dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -472,7 +547,7 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -480,21 +555,28 @@
                             android:padding="2dp"
                             android:text="College Name : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_collegename"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/viewcollegename"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-                            android:text=""
-
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
+                    </LinearLayout>
 
-                        <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -502,28 +584,19 @@
                             android:padding="2dp"
                             android:text="Course Name : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_course_name"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_coursename"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-                            android:text=""
-
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
                     </LinearLayout>
-                </LinearLayout>
-                <!--#10-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:orientation="vertical"
-                    android:padding="2dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -533,52 +606,56 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-                            android:inputType="text"
                             android:text="Matric % : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_matricpercent"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_matricpercent"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
+                    </LinearLayout>
 
-                        <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">>
+
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
                             android:text="Year Of Passing : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_MatricYOP"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_matricYOP"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
-
+                            android:textSize="14dp" />
                     </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -588,30 +665,36 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
                             android:text="12TH % : "
-                            android:inputType="text"
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_Twelthpercent"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_twelthPercent"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
+                    </LinearLayout>
 
-                        <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">>
+
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -619,19 +702,17 @@
                             android:padding="2dp"
                             android:text="Year Of Passing : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_TwelthYOP"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_twelthYOP"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -642,7 +723,7 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -650,21 +731,28 @@
                             android:padding="2dp"
                             android:text="Matric Board : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_MatricBoard"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_MatricBoard"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-                            android:text=""
-
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
+                    </LinearLayout>
 
-                        <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -672,19 +760,17 @@
                             android:padding="2dp"
                             android:text="12TH Board :  "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_twelthBoard"
                             android:layout_width="0dp"
-                            android:id="@+id/student_profile_TwelthBoard"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -695,7 +781,7 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -703,50 +789,18 @@
                             android:padding="2dp"
                             android:text="Other Qualification : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_Qualification"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_Qualification"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="1dp"
-                            android:layout_weight="1"
-                            android:padding="2dp"
-                            android:text="Percent % : "
-                            android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/student_profile_Otherpercent"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="1dp"
-                            android:layout_weight="1"
-                            android:padding="2dp"
-
-                            android:text=""
-                            android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
                     </LinearLayout>
-                </LinearLayout>
-                <!--#11-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:orientation="vertical"
-                    android:padding="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -756,28 +810,64 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="1dp"
-                            android:layout_weight="1"
-                            android:inputType="text"
-                            android:padding="2dp"
-                            android:text=" Address : "
-                            android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/student_profile_permanent_address"
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
+                            android:text="Percent % : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_otherpercent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dp"
+                            android:layout_weight="1"
+                            android:padding="2dp"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="1dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dp"
+                            android:layout_weight="1"
+                            android:padding="2dp"
+                            android:text="Permanent Address : "
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14dp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_Address"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dp"
+                            android:layout_weight="1"
+                            android:padding="2dp"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
 
                         <!--<android.support.v7.widget.AppCompatTextView-->
                         <!--android:layout_width="0dp"-->
@@ -789,7 +879,7 @@
                         <!--android:textColor="@color/colorBlack"-->
                         <!--android:textSize="14sp" />-->
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -797,28 +887,19 @@
                             android:padding="2dp"
                             android:text="Pincode : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_pin_code"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_pin_code"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
                     </LinearLayout>
-                </LinearLayout>
-                <!--#12-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:orientation="vertical"
-                    android:padding="2dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -828,7 +909,7 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -836,21 +917,28 @@
                             android:padding="2dp"
                             android:text="Student Type : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_studentType"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_Studenttype"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
+                    </LinearLayout>
 
-                        <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -858,57 +946,27 @@
                             android:padding="2dp"
                             android:text="Batch Year : "
                             android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/student_profile_Batchyear"
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/view_Batchyear"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
                             android:layout_weight="1"
                             android:padding="2dp"
-
-                            android:text=""
                             android:textColor="@color/colorBlack"
                             android:textSize="14sp" />
 
                     </LinearLayout>
 
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:padding="2dp">
-
-                    <!--<Button-->
-                        <!--android:id="@+id/btn_submit"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_margin="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:padding="2dp"-->
-                        <!--android:text="SUBMIT "-->
-                        <!--android:textColor="@color/colorBlack"-->
-                        <!--android:textSize="14sp" />-->
-
-                    <Button
-                        android:id="@+id/btn_cancel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="1dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text="CANCEL "
-                        android:textColor="@color/colorBlack"
-                        android:textSize="14sp" />
                 </LinearLayout>
             </LinearLayout>
-
         </ScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
+
+
+
+

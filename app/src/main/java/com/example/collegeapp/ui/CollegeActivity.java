@@ -90,26 +90,23 @@ public class CollegeActivity extends AppCompatActivity {
 
     }
     void SaveCollegesInCloudDb() {
-            if (updateMode) {
-                firebaseUser = auth.getCurrentUser();
-                String docId = firebaseUser.getUid();
-                db.collection("User").document(docId).collection("College").document(firebaseUser.getUid()).set(colleges)
-                        .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isComplete()) {
-                                    Toast.makeText(CollegeActivity.this, "Updation Finished", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(CollegeActivity.this, AllCollegeActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(CollegeActivity.this, "Updation Failed", Toast.LENGTH_LONG).show();
-                                }
+        if (updateMode) {
+            db.collection("User").document(firebaseUser.getUid()).collection("College").document(colleges.docID).set(colleges)
+                    .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isComplete()) {
+                                Toast.makeText(CollegeActivity.this, "Updation Finished", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(CollegeActivity.this, AllCollegeActivity.class);
+                                startActivity(intent);
+                                //finish();
+                            } else {
+                                Toast.makeText(CollegeActivity.this, "Updation Failed", Toast.LENGTH_LONG).show();
                             }
-                        });
+                        }
+                    });
 
-        } else {
-                db.collection("User").document(firebaseUser.getUid()).collection("College").add(colleges)
+        } else {                db.collection("User").document(firebaseUser.getUid()).collection("College").add(colleges)
                         .addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {

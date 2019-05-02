@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.collegeapp.listener.OnRecyclerItemClickListener;
 import com.example.collegeapp.model.Guidelines;
+import com.example.collegeapp.ui.AllGuidelinesActivity;
 import com.example.e_collegeapp.R;
 
 import java.util.ArrayList;
@@ -20,9 +21,12 @@ public class GuidelinesAdapter extends RecyclerView.Adapter<GuidelinesAdapter.Vi
 
     OnRecyclerItemClickListener recyclerItemClickListener;
 
-    public void setOnRecyclerItemClickListener(OnRecyclerItemClickListener recyclerItemClickListener) {
-        this.recyclerItemClickListener = recyclerItemClickListener;
+    public void setOnRecyclerItemClickListener(OnRecyclerItemClickListener recycleritemclicklistener) {
+        this.recyclerItemClickListener =  recycleritemclicklistener;
+
     }
+
+
     public  GuidelinesAdapter(Context context, int resources, ArrayList<Guidelines> objects) {
         this.context = context;
         this.resources = resources;
@@ -53,6 +57,8 @@ public class GuidelinesAdapter extends RecyclerView.Adapter<GuidelinesAdapter.Vi
         return objects.size();
     }
 
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtTitle;
         public ViewHolder(View itemView) {
@@ -61,3 +67,6 @@ public class GuidelinesAdapter extends RecyclerView.Adapter<GuidelinesAdapter.Vi
         }
     }
 }
+
+
+

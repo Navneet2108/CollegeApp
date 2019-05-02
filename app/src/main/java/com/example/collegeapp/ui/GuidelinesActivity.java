@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.collegeapp.model.Courses;
 import com.example.collegeapp.model.Guidelines;
 import com.example.e_collegeapp.R;
 
@@ -25,7 +26,7 @@ public class GuidelinesActivity extends AppCompatActivity implements View.OnClic
       Button btnview,btnsave;
 
       Guidelines guidelines;
-
+    boolean updateMode;
       FirebaseUser firebaseUser;
       FirebaseAuth auth;
       FirebaseFirestore db;
@@ -50,6 +51,21 @@ public class GuidelinesActivity extends AppCompatActivity implements View.OnClic
 
         btnview.setOnClickListener(this);
         btnsave.setOnClickListener(this);
+
+        Intent rcv = getIntent();
+
+        updateMode = rcv.hasExtra("keyGuideln");
+        if (updateMode) {
+            getSupportActionBar().setTitle("E-College");
+            guidelines = (Guidelines) rcv.getSerializableExtra("keyGuideln");
+            etxtguideline.setText(guidelines.guideln);
+
+            btnsave.setText("Update Course");
+            btnview.setVisibility(View.INVISIBLE);
+
+
+        }
+
     }
 
     @Override
@@ -59,18 +75,36 @@ public class GuidelinesActivity extends AppCompatActivity implements View.OnClic
         initViews();
     }
     void saveguidelines(){
-        progressDialog.show();
-        db.collection("User").document(firebaseUser.getUid()).collection("College").document(firebaseUser.getUid()).collection("AdmissionGuidelines").add(guidelines)
-                .addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                        if (task.isComplete()){
-                            Toast.makeText(GuidelinesActivity.this, "Details Saved Successfully", Toast.LENGTH_LONG).show();
-                            progressDialog.dismiss();
-                            clearFields();
+        if (updateMode) {
+            db.collection("User").document(firebaseUser.getUid()).collection("College").document(firebaseUser.getUid()).collection("AdmissionGuidelines").document(guidelines.docid).set(guidelines)
+                    .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isComplete()) {
+                                Toast.makeText(GuidelinesActivity.this, "Updation Finished", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(GuidelinesActivity.this, CoursesActivity.class);
+                                startActivity(intent);
+                                //finish();
+                            } else {
+                                Toast.makeText(GuidelinesActivity.this, "Updation Failed", Toast.LENGTH_LONG).show();
+                            }
                         }
-                    }
-                });
+                    });
+
+        } else {
+            progressDialog.show();
+            db.collection("User").document(firebaseUser.getUid()).collection("College").document(firebaseUser.getUid()).collection("AdmissionGuidelines").add(guidelines)
+                    .addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                            if (task.isComplete()) {
+                                Toast.makeText(GuidelinesActivity.this, "Details Saved Successfully", Toast.LENGTH_LONG).show();
+                                progressDialog.dismiss();
+                                clearFields();
+                            }
+                        }
+                    });
+        }
     }
     void clearFields(){
         etxtguideline.setText("");
@@ -87,9 +121,9 @@ public class GuidelinesActivity extends AppCompatActivity implements View.OnClic
                 saveguidelines();
                 break;
             case R.id.btnView:
-                //Intent intent=new Intent(GuidelinesActivity.this,AllGuidelinesActivity.class);
-                //startActivity(intent);
-                //finish();
+                Intent intent=new Intent(GuidelinesActivity.this,AllGuidelinesActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
 
