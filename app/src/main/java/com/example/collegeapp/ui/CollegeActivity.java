@@ -106,7 +106,8 @@ public class CollegeActivity extends AppCompatActivity {
                         }
                     });
 
-        } else {                db.collection("User").document(firebaseUser.getUid()).collection("College").add(colleges)
+        } else {
+            db.collection("User").document(firebaseUser.getUid()).collection("College").add(colleges)
                         .addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {

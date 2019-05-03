@@ -26,7 +26,7 @@ public class GuidelinesActivity extends AppCompatActivity implements View.OnClic
       Button btnview,btnsave;
 
       Guidelines guidelines;
-    boolean updateMode;
+      boolean updateMode;
       FirebaseUser firebaseUser;
       FirebaseAuth auth;
       FirebaseFirestore db;
@@ -76,13 +76,14 @@ public class GuidelinesActivity extends AppCompatActivity implements View.OnClic
     }
     void saveguidelines(){
         if (updateMode) {
-            db.collection("User").document(firebaseUser.getUid()).collection("College").document(firebaseUser.getUid()).collection("AdmissionGuidelines").document(guidelines.docid).set(guidelines)
+            db.collection("User").document(firebaseUser.getUid())
+                    .collection("AdmissionGuidelines").document(guidelines.docid).set(guidelines)
                     .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isComplete()) {
                                 Toast.makeText(GuidelinesActivity.this, "Updation Finished", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(GuidelinesActivity.this, CoursesActivity.class);
+                                Intent intent = new Intent(GuidelinesActivity.this, AllGuidelinesActivity.class);
                                 startActivity(intent);
                                 //finish();
                             } else {
@@ -93,7 +94,7 @@ public class GuidelinesActivity extends AppCompatActivity implements View.OnClic
 
         } else {
             progressDialog.show();
-            db.collection("User").document(firebaseUser.getUid()).collection("College").document(firebaseUser.getUid()).collection("AdmissionGuidelines").add(guidelines)
+            db.collection("User").document(firebaseUser.getUid()).collection("AdmissionGuidelines").add(guidelines)
                     .addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentReference> task) {

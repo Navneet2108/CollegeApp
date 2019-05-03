@@ -31,7 +31,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllGuidelinesActivity extends AppCompatActivity implements View.OnClickListener {
+public class AllGuidelinesActivity extends AppCompatActivity implements OnRecyclerItemClickListener {
     RecyclerView recyclerView;
     ArrayList<Guidelines> guidelinesArrayList;
     int position;
@@ -45,16 +45,11 @@ public class AllGuidelinesActivity extends AppCompatActivity implements View.OnC
     void initViews() {
         recyclerView = findViewById(R.id.GuidelinesRecyclerview);
         recyclerView.setAdapter(guidelinesAdapter);
-
         firebaseAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-
         guidelines = new Guidelines();
         user=new User();
-
-
-
     }
 
     @Override
@@ -69,7 +64,7 @@ public class AllGuidelinesActivity extends AppCompatActivity implements View.OnC
         }
     }
     void fetchGuidelinesFromCloudDb() {
-        db.collection("User").document(firebaseUser.getUid()).collection("College").document(firebaseUser.getUid()).collection("AdmissionGuidelines").get()
+        db.collection("User").document(firebaseUser.getUid()).collection("AdmissionGuidelines").get()
                 .addOnCompleteListener(this, new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -90,7 +85,7 @@ public class AllGuidelinesActivity extends AppCompatActivity implements View.OnC
                             guidelinesAdapter = new GuidelinesAdapter(AllGuidelinesActivity.this,R.layout.guidelines_item, guidelinesArrayList);
                             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(AllGuidelinesActivity.this);
                             recyclerView.setAdapter(guidelinesAdapter);
-//                            guidelinesAdapter.setOnRecyclerItemClickListener((OnRecyclerItemClickListener) AllGuidelinesActivity.this);
+                           guidelinesAdapter.setOnRecyclerItemClickListener((OnRecyclerItemClickListener) AllGuidelinesActivity.this);
 
                             recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -139,13 +134,7 @@ public class AllGuidelinesActivity extends AppCompatActivity implements View.OnC
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-    @Override
-    public void onClick(View v) {
-        this.position = position;
-        guidelines = guidelinesArrayList.get(position);
-        Toast.makeText(this, "You Clicked on Position:" + position, Toast.LENGTH_LONG).show();
-        showOptions();
-    }
+
     void showOptions() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         String[] items = {"View","Update", "Delete","Cancel"};
@@ -177,4 +166,12 @@ public class AllGuidelinesActivity extends AppCompatActivity implements View.OnC
 
     }
 
+    @Override
+    public void onItemClick(int position) {
+        this.position = position;
+        guidelines = guidelinesArrayList.get(position);
+        Toast.makeText(this, "You Clicked on Position:" + position, Toast.LENGTH_LONG).show();
+        showOptions();
+
+    }
 }

@@ -40,6 +40,7 @@ User user;
     FirebaseUser firebaseUser;
     FirebaseFirestore db;
 
+
     void initViews() {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setAdapter(collegeAdapter);
